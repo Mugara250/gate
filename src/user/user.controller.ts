@@ -1,10 +1,13 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { UserService } from './user.service';
+import { UserDTO } from './dto/user.dto';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('me')
-  public getMe() {}
+  @Get('')
+  public getAll(): UserDTO[] {
+    return this.userService.getAll();
+  }
 }
